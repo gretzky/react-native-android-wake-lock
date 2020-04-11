@@ -1,0 +1,99 @@
+{
+  "name": "react-native-android-wake-lock",
+  "version": "1.0.0",
+  "author": "Sara Pope <sarafpope@gmail.com>",
+  "repository": "https://github.com/gretzky/react-native-android-wake-lock",
+  "license": "MIT",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index.ts",
+  "files": [
+    "lib/",
+    "src/",
+    "android/",
+    "!/android/build"
+  ],
+  "keywords": [
+    "react-native",
+    "react native",
+    "cpu lock",
+    "wake lock",
+    "wakelock",
+    "wifi lock",
+    "android"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint --ext .ts src",
+    "clean": "rimraf lib",
+    "build": "bob build",
+    "prepare": "yarn build",
+    "cz": "git-cz"
+  },
+  "peerDependencies": {
+    "react": ">=16.9",
+    "react-native": ">=0.60"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@react-native-community/bob": "^0.10.0",
+    "@types/react": "^16.9.34",
+    "@types/react-native": "^0.62.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "commitizen": "^4.0.4",
+    "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "husky": "^4.2.5",
+    "jest": "^25.3.0",
+    "lint-staged": "^10.1.3",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "prettier": "^2.0.4",
+    "react": "^16.13.1",
+    "react-native": "^0.62.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "yarn lint:ts",
+      "git add"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "lib": ["esnext"],
+    "jsx": "react-native",
+    "skipLibCheck": false,
+    "declaration": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "lib"]
+}
