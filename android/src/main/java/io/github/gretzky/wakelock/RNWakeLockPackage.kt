@@ -19,7 +19,7 @@ class RNWakeLockPackage : ReactPackage {
         return modules
     }
 
-    override fun createViewManagers(reactContext: ReactApplicationContext()): List<ViewManager<*, *>> {
+    override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
         return Collections.emptyList<ViewManager<*, *>>()
     }
 }
