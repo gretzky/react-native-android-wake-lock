@@ -1,4 +1,4 @@
-import { NativeModules } from "react-native";
+import { NativeModules, Platform } from "react-native";
 import { WakeLockModule } from "./types";
 import { useEffect } from "react";
 
@@ -13,7 +13,7 @@ if (!WakeLockNativeModule) {
 If none of these fix the issue, open an issue on Github: https://github.com/gretzky/react-native-android-wake-lock`);
 }
 
-const WakeLockInterface = {
+const WakeLockInterface = Platform.OS === 'android' ? {
   ...WakeLockNativeModule,
   setWakeLock(): Promise<boolean> {
     return WakeLockNativeModule.setWakeLock();
@@ -23,6 +23,16 @@ const WakeLockInterface = {
   },
   isWakeLocked(): Promise<boolean> {
     return WakeLockNativeModule.isWakeLocked();
+  },
+} : {
+  setWakeLock(): Promise<boolean> {
+    return Promise.resolve(false);
+  },
+  releaseWakeLock(): Promise<boolean> {
+    return Promise.resolve(false);
+  },
+  isWakeLocked(): Promise<boolean> {
+    return Promise.resolve(false);
   },
 };
 

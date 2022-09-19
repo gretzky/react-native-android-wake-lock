@@ -72,3 +72,5 @@ The interface has 3 methods:
 - **`setWakeLock(): Promise<boolean>`** - sets both the WakeLock and WifiLock
 - **`releaseWakeLock(): Promise<boolean>`** - releases both the WakeLock and WifiLock
 - **`isWakeLocked(): Promise<boolean>`** - whether or not the wake/wifi locks are held
+
+**:warning: On platforms other than Android, methods will always return `false`.**

@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "lib": ["esnext"],
     "jsx": "react-native",
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "declaration": true
   },
   "include": ["src"],
