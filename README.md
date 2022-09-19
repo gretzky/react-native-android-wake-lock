@@ -31,10 +31,10 @@ import React from "react";
 import { WakeLockInterface, useWakeLock } from "react-native-android-wake-lock";
 
 // the interface exposes all 3 (async) methods
-const isWakeLocked = WakeLockInterface.isWakeLocked();
+const isWakeLocked = await WakeLockInterface.isWakeLocked();
 // these 2 aren't necessary if you're using the hook
-const setWakeLock = WakeLockInterface.setWakeLock();
-const releaseWakeLock = WakeLockInterface.releaseWakeLock();
+const setWakeLock = await WakeLockInterface.setWakeLock();
+const releaseWakeLock = await WakeLockInterface.releaseWakeLock();
 
 // you can also use the hook to set/release a wake lock on component mount/unmount
 const Component = () => {
