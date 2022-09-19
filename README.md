@@ -11,18 +11,32 @@ Install with npm/yarn.
 ```bash
 npm install react-native-android-wake-lock --save
 // or
-yarn add react-native-wake-lock
+yarn add react-native-android-wake-lock
 ```
 
 Since this package requires RN 0.60 or higher, this package will be linked automatically. If you run into an issue, you can try `react-native link react-native-android-wake-lock`.
 
-## Usage
+### Additional setup
 
-Make sure to request the wake lock permission. Add the following inside the project manifest (`android/app/src/main/AndroidManifest.xml`):
+This library requires your `minSdkVersion` to be set to `>= 23`. So make sure to edit your gradle build file (`android/build.gradle`) file with:
+
+```gradle
+buildscript {
+  ext {
+    ...
+    minSdkVersion = 23 // or higher
+    ...
+  }
+}
+```
+
+Also, make sure to request the wake lock permission. Add the following inside the project manifest (`android/app/src/main/AndroidManifest.xml`):
 
 ```xml
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 ```
+
+## Usage
 
 This module exposes 2 possible methods for accessing the wake lock: via an interface object or a React hook. Depending on your use case, one or the other should suffice.
 
