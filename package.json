@@ -93,8 +93,10 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-      "yarn lint:ts",
-      "git add"
+      "yarn lint"
+    ],
+    "*.{ts}": [
+      "yarn lint:ts"
     ]
   }
 }
