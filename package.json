@@ -28,6 +28,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts src",
+    "lint:ts": "tsc --noEmit",
     "clean": "rimraf lib",
     "build": "bob build",
     "prepare": "yarn build",
@@ -92,8 +93,10 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-      "yarn lint:ts",
-      "git add"
+      "yarn lint"
+    ],
+    "*.{ts}": [
+      "yarn lint:ts"
     ]
   }
 }

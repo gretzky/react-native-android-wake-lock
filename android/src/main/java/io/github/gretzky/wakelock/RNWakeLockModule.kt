@@ -24,19 +24,20 @@ class RNWakeLockModule(reactContext: ReactApplicationContext) : ReactContextBase
 
     init {
         mPowerManager = reactContext.getSystemService(Context.POWER_SERVICE) as PowerManager
-        mWifiManager = reactContext.getSystemService(Context.WIFI_SERVICE) as WifiManager 
+        mWifiManager = reactContext.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 
-        wakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "RNWakeLock")
-        wifiLock = mWifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, "RNWakeLock")
+        wakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, this.name)
+        wifiLock = mWifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, this.name)
     }
 
     @ReactMethod
     fun setWakeLock(promise: Promise) {
         if (isWakeLocked) {
+            promise.resolve(isWakeLocked)
             return
         }
-        this.wakeLock!!.acquire()
-        this.wifiLock!!.acquire()
+        this.wakeLock?.acquire()
+        this.wifiLock?.acquire()
         isWakeLocked = true
         promise.resolve(isWakeLocked)
     }
@@ -44,10 +45,11 @@ class RNWakeLockModule(reactContext: ReactApplicationContext) : ReactContextBase
     @ReactMethod
     fun releaseWakeLock(promise: Promise) {
         if (!isWakeLocked) {
+            promise.resolve(isWakeLocked)
             return
         }
-        this.wakeLock!!.release()
-        this.wifiLock!!.release()
+        this.wakeLock?.release()
+        this.wifiLock?.release()
         isWakeLocked = false
         promise.resolve(isWakeLocked)
     }
