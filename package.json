@@ -28,6 +28,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts src",
+    "lint:ts": "tsc --noEmit",
     "clean": "rimraf lib",
     "build": "bob build",
     "prepare": "yarn build",
